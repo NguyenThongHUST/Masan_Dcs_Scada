@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Cài đặt thông số hệ thống";
+    List<Product> products = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(TempData["products"] as string);
+}
+
+<form class="parameter-form form-group bg-info" method="post" enctype="multipart/form-data" asp-controller="Stock" asp-action="InsertStock">
+    <h4 style="color:red;">CÀI ĐẶT THÔNG SỐ</h4>
+    <div class="form-block">
+        <div class="form-control">
+            Dây chuyền
+            <select name="line">
+                <option value="" selected>Chọn dây chuyền</option>
+                <option value="line1">Dây chuyền 1</option>
+                <option value="line1">Dây chuyền 2</option>
+                <option value="line1">Dây chuyền 3</option>
+                <option value="line1">Dây chuyền 4</option>
+                <option value="line1">Dây chuyền 5</option>
+                <option value="line1">Dây chuyền 6</option>
+                <option value="line1">Dây chuyền 7</option>
+                <option value="line1">Dây chuyền 8</option>
+            </select>
+        </div>
+        <div class="form-control">
+            Tên máy
+            <select name="line">
+                <option value="" selected>Chọn máy</option>
+                <option value="merchine1">Máy 1</option>
+                <option value="merchine2">Máy 2</option>
+                <option value="merchine3">Máy 3</option>
+                <option value="merchine4">Máy 4</option>
+
+            </select>
+        </div>
+        <div class="form-control">
+            Ca
+            <select name="shift">
+                <option value="" selected>Chọn ca</option>
+                <option value="shift1">Ca 1</option>
+                <option value="shift3">Ca 2</option>
+                <option value="shift3">Ca 3</option>
+            </select>
+        </div>
+        <div class="form-control">
+            Mã sản phẩm
+            <select id="productCode" name="productCode">
+                <option value="" selected>Chọn sản phẩm</option>
+                @foreach (Product pd in products)
+                {
+                    <option value="@pd.Code">@pd.Code</option>
+                }
+            </select>
+        </div>
+        <div class="form-control">
+            Tên sản phẩm
+            <input type="text" name="productName" value="" disabled />
+        </div>
+    </div>
+    <div class="form-block">
+        <div class="form-control">
+            Tốc độ chuẩn (gói/phút)
+            <input type="number" name="productName" value=""  />
+        </div>
+        <div class="form-control">
+            Thời gian tính dừng máy (x0.1s)
+            <input type="number" name="productName" value=""  />
+        </div>
+        <div class="form-control">
+            Thời gian chấp nhận gói (x0.1s)
+            <input type="number" name="productName" value="" />
+        </div>
+        <div class="form-control">
+            Thời gian tính gói cần (x0.1s)
+            <input type="number" name="productName" value="" />
+        </div>
+        <div class="form-control">
+            Thời gian đẩy gói cần (x0.1s)
+            <input type="number" name="productName" value="" />
+        </div>
+        <div class="form-control">
+            Thời gian cập nhật từ PLC (s)
+            <input type="number" name="productName" value=""  />
+        </div>
+    </div>
+    <div style="display:flex">
+        <button class="btn btn-primary" type="submit" style="font-size:20px"> Thiết lập</button>
+        <button class="btn btn-secondary" style="font-size:20px"> Ghi xuống</button>
+        <button class="btn btn-danger" style="font-size:20px"> Thoát</button>
+    </div>
+</form>
+
+
+
